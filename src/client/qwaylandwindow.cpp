@@ -516,10 +516,9 @@ void QWaylandWindow::surface_enter(wl_output *output)
     auto addedScreen = QWaylandScreen::fromWlOutput(output);
 
     if (mScreens.contains(addedScreen)) {
-        qWarning() << "Unexpected wl_surface.enter received for output with id:"
+        qWarning() << "Unexpected wl_surface.enter received for output with id (new ver):"
                    << wl_proxy_get_id(reinterpret_cast<wl_proxy *>(output))
                    << "screen name:" << addedScreen->name() << "screen model:" << addedScreen->model();
-        return;
     }
 
     mScreens.append(addedScreen);
