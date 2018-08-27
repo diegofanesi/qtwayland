@@ -534,10 +534,10 @@ void QWaylandWindow::surface_leave(wl_output *output)
     auto *removedScreen = QWaylandScreen::fromWlOutput(output);
     bool wasRemoved = mScreens.removeOne(removedScreen);
     if (!wasRemoved) {
-        qWarning() << "Unexpected wl_surface.leave received for output with id:"
+        qWarning() << "Unexpected wl_surface.leave received for output with id (new ver):"
                    << wl_proxy_get_id(reinterpret_cast<wl_proxy *>(output))
                    << "screen name:" << removedScreen->name() << "screen model:" << removedScreen->model();
-        return;
+      
     }
 
     QWaylandScreen *newScreen = calculateScreenFromSurfaceEvents();
